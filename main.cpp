@@ -12,12 +12,13 @@ bool characterCreated = false;
 void showMenu(){
 
     std::cout << "=========================" << std::endl;
-     std::cout << "RPG CHARACTER MANAGER" << std::endl;
-     std::cout << "=========================" << std::endl;
-      std::cout << " 1.Create Character" << std::endl;
-       std::cout << " 2.Show Character" << std::endl;
-       std::cout <<" 3.Fight monster" << std::endl;
-        std::cout <<" 4.Exit" << std::endl;
+    std::cout << "RPG CHARACTER MANAGER" << std::endl;
+    std::cout << "=========================" << std::endl;
+    std::cout << "1.Create Character" << std::endl;
+    std::cout << "2.Show Character" << std::endl;
+    std::cout <<"3.Fight monster" << std::endl;
+    std::cout <<"4.Heal Character" << std::endl;
+    std::cout <<"5.Exit" << std::endl;
         
 }
 
@@ -67,6 +68,16 @@ void fightMonster(){
   }
 }
 
+void healCharacter(){
+  std::cout << "Healing.." << std::endl;
+  playerHP += 20;
+  if( playerHP > 100){
+    playerHP = 100;
+  }
+  std::cout << "You recovered 20 HP!" << std::endl;
+  std::cout << "Current HP: " << playerHP << std::endl;
+}
+
 int main()
 {
      int option;
@@ -111,7 +122,10 @@ do{
     }
   }
   }
-  else if (option == 4){
+  else if(option==4){
+    healCharacter();
+  }
+  else if (option == 5){
     std::cout << "Goodbye!" << std::endl;
   }
 else{
@@ -119,6 +133,6 @@ else{
 }
 
 }
-while (option != 4);
+while (option != 5);
 return 0;
 }
