@@ -47,7 +47,7 @@ void showCharacter(){
     std::cout << "Name: " << playerName << std::endl;
     std::cout << "Class: " << playerClass << std::endl;
     std::cout << "Level: " << playerLevel << std::endl;
-    std::cout << "HP: " << playerHP << std::endl;
+    std::cout << "Current HP: " << playerHP << " / 100" << std::endl;
     std::cout << "====================" << std::endl;
 }
 
@@ -59,7 +59,7 @@ void fightMonster(){
   std::cout << "The Goblin hits you for " << damage << " damage!" << std::endl;
   
   playerHP -= damage;
-  
+
   if( playerHP <= 0){
     playerHP = 0;
     std::cout << "You are dead!" << std::endl;
