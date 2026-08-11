@@ -8,6 +8,8 @@ std::string playerClass;
 int playerLevel;
 int playerHP;
 bool characterCreated = false;
+int playerGold = 0;
+int maxHP = 100;
 
 void showMenu(){
 
@@ -23,18 +25,15 @@ void showMenu(){
 }
 
 void createCharacter(){
-
     std::cout << "Enter character name: ";
     std::cin >> playerName;
 
     std::cout << "Enter character class: ";
     std::cin >> playerClass;
 
-    std::cout << "Enter character level: ";
-    std::cin >> playerLevel;
-
-    std::cout << "Enter HP: ";
-    std::cin >> playerHP;
+    playerLevel = 1;
+    playerGold = 0;
+    playerHP = 100;
 
     std::cout << "Character created!" << std::endl;
 
@@ -47,13 +46,15 @@ void showCharacter(){
     std::cout << "Name: " << playerName << std::endl;
     std::cout << "Class: " << playerClass << std::endl;
     std::cout << "Level: " << playerLevel << std::endl;
-    std::cout << "Current HP: " << playerHP << " / 100" << std::endl;
+    std::cout << "Gold: " << playerGold << std::endl;
+    std::cout << "Current HP: " << playerHP << " / " << maxHP << std::endl;
     std::cout << "====================" << std::endl;
 }
 
 void fightMonster(){
 
   int damage = rand() % 71 + 10;
+  int gold = rand() % 16 + 5;
 
   std::cout << "A wild Goblin appears!" << std::endl;
   std::cout << "The Goblin hits you for " << damage << " damage!" << std::endl;
@@ -65,7 +66,10 @@ void fightMonster(){
     std::cout << "You are dead!" << std::endl;
   }
   else{
+    playerGold += gold;
   std::cout << "Current HP: " << playerHP << std::endl;
+  std::cout << "The Goblin dropped " << gold << " gold!" << std::endl;
+  std::cout << "Current Gold: " << playerGold << std::endl;
   }
 }
 
