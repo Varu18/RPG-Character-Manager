@@ -59,6 +59,7 @@ void fightMonster(){
   std::cout << "The Goblin hits you for " << damage << " damage!" << std::endl;
   
   playerHP -= damage;
+  
   if( playerHP <= 0){
     playerHP = 0;
     std::cout << "You are dead!" << std::endl;
@@ -69,12 +70,16 @@ void fightMonster(){
 }
 
 void healCharacter(){
+  int oldHP = playerHP;
   std::cout << "Healing.." << std::endl;
   playerHP += 20;
+
   if( playerHP > 100){
     playerHP = 100;
   }
-  std::cout << "You recovered 20 HP!" << std::endl;
+
+  int healedAmount = playerHP - oldHP;
+  std::cout << "You recovered " << healedAmount << " HP!" << std::endl;
   std::cout << "Current HP: " << playerHP << std::endl;
 }
 
