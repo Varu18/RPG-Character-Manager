@@ -10,12 +10,18 @@ Version 0.6
 
 ## Project Roadmap
 
-Current milestone: Version 0.5
+### ✅ Current Milestone
+Version 0.6
 
-Next milestone:
-- Inventory system
-- Potions
-- Save and load game
+Focus:
+- Introduced the Player struct.
+- Improved code organization.
+- Continued learning object based design.
+
+### 🎯 Next Milestone (Version 0.7)
+- Inventory system.
+- Potions.
+- Save and load game.
 
 ## Technologies
 
