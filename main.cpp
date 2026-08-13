@@ -10,6 +10,8 @@ int playerHP;
 bool characterCreated = false;
 int playerGold = 0;
 int maxHP = 100;
+std::string monsters[4] = {"Goblin", "Skeleton", "Orc", "Slime"};
+
 
 void showMenu(){
 
@@ -55,9 +57,10 @@ void fightMonster(){
 
   int damage = rand() % 71 + 10;
   int gold = rand() % 16 + 5;
+  int randomMonster = rand() % 4;
 
-  std::cout << "A wild Goblin appears!" << std::endl;
-  std::cout << "The Goblin hits you for " << damage << " damage!" << std::endl;
+  std::cout << "A wild " << monsters[randomMonster] << " appears!" << std::endl;
+  std::cout << "The " << monsters[randomMonster] << " hits you for " << damage << " damage!" << std::endl;
   
   playerHP -= damage;
 
@@ -68,7 +71,7 @@ void fightMonster(){
   else{
     playerGold += gold;
   std::cout << "Current HP: " << playerHP << std::endl;
-  std::cout << "The Goblin dropped " << gold << " gold!" << std::endl;
+  std::cout << "The " << monsters[randomMonster] << " dropped " << gold << " gold!" << std::endl;
   std::cout << "Current Gold: " << playerGold << std::endl;
   }
 }
