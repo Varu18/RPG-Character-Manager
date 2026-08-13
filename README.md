@@ -6,7 +6,7 @@ This project is part of my learning journey and is developed with AI assisted gu
 
 ## Current Version
 
-Version 0.5
+Version 0.6
 
 ## Project Roadmap
 
@@ -30,6 +30,7 @@ Next milestone:
 - Practice problem solving.
 - Learn Git and GitHub workflow.
 - Build a complete console RPG from scratch.
+- Learn to organize code using structs.
 - Build a strong programming foundation for future languages such as Python and JavaScript.
 
 ## Features
@@ -42,7 +43,7 @@ Next milestone:
 - Level up your character.
 - View character statistics.
 
-## Project Status
+## Current Progress
 
 Implemented features:
 
@@ -66,11 +67,30 @@ Implemented features:
 - Equipment system
 - Boss battles
 
+## Version History
+
+### Version 0.6
+- Refactored player data using a struct.
+- Improved code organization.
+
+### Version 0.5
+- Added XP system.
+- Added level up system.
+- Improved battle output.
+- Added random monster encounters.
+
+### Version 0.4
+- Added healing system.
+- Added gold rewards.
+
+### Version 0.3
+- Initial RPG Character Manager.
+
 ## About This Project
 
 This project is part of my journey to learn software development.
 
-The goal is not only to build a simple RPG game, but also to learn fundamental programming concepts in C++. Every feature is implemented step by step to better understand C++, problem solving, and software development practices.
+The goal is not only to build a simple RPG game, but also to learn fundamental programming concepts in C++. Every feature is implemented step by step to better understand C++, problem solving, software design, and software development practices.
 
 This project is AI assisted. I use ChatGPT as a learning mentor to understand concepts, review my code, and improve my programming skills. All code is written, tested, and committed by me as part of the learning process.
 

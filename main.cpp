@@ -3,15 +3,19 @@
 #include <cstdlib>
 #include <ctime>
 
-std::string playerName;
-std::string playerClass;
-int playerLevel;
-int playerHP;
+struct Player
+{
+    std::string playerName;
+    std::string playerClass;
+    int playerLevel = 1;
+    int playerHP = 100;
+    int playerGold = 0;
+    int playerXP = 0;
+};
+Player player;
 bool characterCreated = false;
-int playerGold = 0;
 int maxHP = 100;
 std::string monsters[4] = {"Goblin", "Skeleton", "Orc", "Slime"};
-int playerXP = 0;
 
 
 void showMenu(){
@@ -29,14 +33,15 @@ void showMenu(){
 
 void createCharacter(){
     std::cout << "Enter character name: ";
-    std::cin >> playerName;
+    std::cin >> player.playerName;
 
     std::cout << "Enter character class: ";
-    std::cin >> playerClass;
+    std::cin >> player.playerClass;
 
-    playerLevel = 1;
-    playerGold = 0;
-    playerHP = 100;
+    player.playerLevel = 1;
+    player.playerGold = 0;
+    player.playerHP = 100;
+    player.playerXP = 0;
 
     std::cout << "Character created!" << std::endl;
 
@@ -46,12 +51,12 @@ void createCharacter(){
 void showCharacter(){
 
     std::cout << "====================" << std::endl;
-    std::cout << "Name: " << playerName << std::endl;
-    std::cout << "Class: " << playerClass << std::endl;
-    std::cout << "Level: " << playerLevel << std::endl;
-    std::cout << "XP: " << playerXP << std::endl;
-    std::cout << "Gold: " << playerGold << std::endl;
-    std::cout << "Current HP: " << playerHP << " / " << maxHP << std::endl;
+    std::cout << "Name: " << player.playerName << std::endl;
+    std::cout << "Class: " << player.playerClass << std::endl;
+    std::cout << "Level: " << player.playerLevel << std::endl;
+    std::cout << "XP: " << player.playerXP << std::endl;
+    std::cout << "Gold: " << player.playerGold << std::endl;
+    std::cout << "Current HP: " << player.playerHP << " / " << maxHP << std::endl;
     std::cout << "====================" << std::endl;
 }
 
@@ -69,16 +74,16 @@ std::cout << "A wild " << monsters[randomMonster] << " appears!" << std::endl;
 std::cout << "The " << monsters[randomMonster] << " hits you for "
           << damage << " damage!" << std::endl;
   
-  playerHP -= damage;
+  player.playerHP -= damage;
 
-  if( playerHP <= 0){
-    playerHP = 0;
+  if( player.playerHP <= 0){
+    player.playerHP = 0;
     std::cout << "You are dead!" << std::endl;
   }
   else{
-    playerGold += gold;
-    playerXP += randomXP;
-    std::cout << "Current HP: " << playerHP << std::endl;
+    player.playerGold += gold;
+    player.playerXP += randomXP;
+    std::cout << "Current HP: " << player.playerHP << std::endl;
     std::cout << std::endl;
     std::cout << "====================" << std::endl;
     std::cout << "REWARDS" << std::endl;
@@ -86,9 +91,9 @@ std::cout << "The " << monsters[randomMonster] << " hits you for "
     std::cout << "The " << monsters[randomMonster] << " dropped "
           << gold << " gold!" << std::endl;
     std::cout << "You gained " << randomXP << " XP!" << std::endl;
-    if(playerXP >= 100){
-      playerLevel += 1;
-      playerXP -= 100;
+    if(player.playerXP >= 100){
+      player.playerLevel += 1;
+      player.playerXP -= 100;
       std::cout << std::endl;
     std::cout << "====================" << std::endl;
     std::cout << "LEVEL UP!" << std::endl;
@@ -96,7 +101,7 @@ std::cout << "The " << monsters[randomMonster] << " hits you for "
 
 std::cout << "Congratulations!" << std::endl;
 std::cout << "You reached Level "
-          << playerLevel << "!" << std::endl;
+          << player.playerLevel << "!" << std::endl;
     }
     std::cout << std::endl;
     std::cout << "====================" << std::endl;
@@ -108,17 +113,17 @@ showCharacter();
 }
 
 void healCharacter(){
-  int oldHP = playerHP;
+  int oldHP = player.playerHP;
   std::cout << "Healing.." << std::endl;
-  playerHP += 20;
+  player.playerHP += 20;
 
-  if( playerHP > 100){
-    playerHP = 100;
+  if( player.playerHP > 100){
+    player.playerHP = 100;
   }
 
-  int healedAmount = playerHP - oldHP;
+  int healedAmount = player.playerHP - oldHP;
   std::cout << "You recovered " << healedAmount << " HP!" << std::endl;
-  std::cout << "Current HP: " << playerHP << std::endl;
+  std::cout << "Current HP: " << player.playerHP << std::endl;
 }
 
 int main()
@@ -157,7 +162,7 @@ do{
     }
     else{
 
-    if(playerHP == 0){
+    if(player.playerHP == 0){
       std::cout << "You are already dead!" << std::endl;
     }
     else{
