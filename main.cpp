@@ -11,6 +11,7 @@ bool characterCreated = false;
 int playerGold = 0;
 int maxHP = 100;
 std::string monsters[4] = {"Goblin", "Skeleton", "Orc", "Slime"};
+int playerXP = 0;
 
 
 void showMenu(){
@@ -48,6 +49,7 @@ void showCharacter(){
     std::cout << "Name: " << playerName << std::endl;
     std::cout << "Class: " << playerClass << std::endl;
     std::cout << "Level: " << playerLevel << std::endl;
+    std::cout << "XP: " << playerXP << std::endl;
     std::cout << "Gold: " << playerGold << std::endl;
     std::cout << "Current HP: " << playerHP << " / " << maxHP << std::endl;
     std::cout << "====================" << std::endl;
@@ -58,9 +60,14 @@ void fightMonster(){
   int damage = rand() % 71 + 10;
   int gold = rand() % 16 + 5;
   int randomMonster = rand() % 4;
+  int randomXP = rand() % 21 + 10;
+  std::cout << "====================" << std::endl;
+  std::cout << "BATTLE" << std::endl;
+  std::cout << "====================" << std::endl;
 
-  std::cout << "A wild " << monsters[randomMonster] << " appears!" << std::endl;
-  std::cout << "The " << monsters[randomMonster] << " hits you for " << damage << " damage!" << std::endl;
+std::cout << "A wild " << monsters[randomMonster] << " appears!" << std::endl;
+std::cout << "The " << monsters[randomMonster] << " hits you for "
+          << damage << " damage!" << std::endl;
   
   playerHP -= damage;
 
@@ -70,9 +77,33 @@ void fightMonster(){
   }
   else{
     playerGold += gold;
-  std::cout << "Current HP: " << playerHP << std::endl;
-  std::cout << "The " << monsters[randomMonster] << " dropped " << gold << " gold!" << std::endl;
-  std::cout << "Current Gold: " << playerGold << std::endl;
+    playerXP += randomXP;
+    std::cout << "Current HP: " << playerHP << std::endl;
+    std::cout << std::endl;
+    std::cout << "====================" << std::endl;
+    std::cout << "REWARDS" << std::endl;
+    std::cout << "====================" << std::endl;
+    std::cout << "The " << monsters[randomMonster] << " dropped "
+          << gold << " gold!" << std::endl;
+    std::cout << "You gained " << randomXP << " XP!" << std::endl;
+    if(playerXP >= 100){
+      playerLevel += 1;
+      playerXP -= 100;
+      std::cout << std::endl;
+    std::cout << "====================" << std::endl;
+    std::cout << "LEVEL UP!" << std::endl;
+    std::cout << "====================" << std::endl;
+
+std::cout << "Congratulations!" << std::endl;
+std::cout << "You reached Level "
+          << playerLevel << "!" << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << "====================" << std::endl;
+    std::cout << "UPDATED CHARACTER" << std::endl;
+    std::cout << "====================" << std::endl;
+
+showCharacter();
   }
 }
 
