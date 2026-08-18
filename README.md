@@ -29,6 +29,7 @@ Focus:
 - Git
 - GitHub
 - Visual Studio Code
+- Fedora Linux
 
 ## Learning Goals
 
@@ -38,6 +39,7 @@ Focus:
 - Build a complete console RPG from scratch.
 - Learn to organize code using structs.
 - Build a strong programming foundation for future languages such as Python and JavaScript.
+- Gain hands on experience with Linux development using Fedora.
 
 ## Features
 
@@ -96,7 +98,9 @@ Implemented features:
 
 This project is part of my journey to learn software development.
 
-The goal is not only to build a simple RPG game, but also to learn fundamental programming concepts in C++. Every feature is implemented step by step to better understand C++, problem solving, software design, and software development practices.
+The goal is not only to build a simple RPG game, but also to learn fundamental programming concepts in C++. Every feature is implemented step by step to better understand C++, problem solving, software design, software architecture, and software development practices.
+
+This project is developed in a Linux environment using Fedora Linux, helping me build practical experience with Linux based software development alongside C++.
 
 This project is AI assisted. I use ChatGPT as a learning mentor to understand concepts, review my code, and improve my programming skills. All code is written, tested, and committed by me as part of the learning process.
 

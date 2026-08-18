@@ -31,7 +31,7 @@ void showMenu(){
         
 }
 
-void createCharacter(){
+void createCharacter(Player& player){
     std::cout << "Enter character name: ";
     std::cin >> player.playerName;
 
@@ -48,7 +48,7 @@ void createCharacter(){
     characterCreated = true;
 }
 
-void showCharacter(){
+void showCharacter(Player player){
 
     std::cout << "====================" << std::endl;
     std::cout << "Name: " << player.playerName << std::endl;
@@ -60,7 +60,7 @@ void showCharacter(){
     std::cout << "====================" << std::endl;
 }
 
-void fightMonster(){
+void fightMonster(Player& player){
 
   int damage = rand() % 71 + 10;
   int gold = rand() % 16 + 5;
@@ -108,11 +108,11 @@ std::cout << "You reached Level "
     std::cout << "UPDATED CHARACTER" << std::endl;
     std::cout << "====================" << std::endl;
 
-showCharacter();
+showCharacter(player);
   }
 }
 
-void healCharacter(){
+void healCharacter(Player& player){
   int oldHP = player.playerHP;
   std::cout << "Healing.." << std::endl;
   player.playerHP += 20;
@@ -141,7 +141,7 @@ do{
       std::cout << "Character already exists!" << std::endl;
     }
       else{
-      createCharacter();
+      createCharacter(player);
     }
   
 
@@ -152,7 +152,7 @@ do{
       std::cout << "No character has been created yet!" << std::endl;
     }
     else{
-    showCharacter();
+    showCharacter(player);
     }
   }
   else if(option == 3){
@@ -166,12 +166,12 @@ do{
       std::cout << "You are already dead!" << std::endl;
     }
     else{
-    fightMonster();
+    fightMonster(player);
     }
   }
   }
   else if(option==4){
-    healCharacter();
+    healCharacter(player);
   }
   else if (option == 5){
     std::cout << "Goodbye!" << std::endl;
