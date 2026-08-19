@@ -3,6 +3,13 @@
 #include <cstdlib>
 #include <ctime>
 
+struct Item
+{
+    std::string nameItem;
+    std::string typeItem;
+    bool occupied = false;
+};
+
 struct Player
 {
     std::string playerName;
@@ -11,12 +18,19 @@ struct Player
     int playerHP = 100;
     int playerGold = 0;
     int playerXP = 0;
+
+    Item inventory[5];
 };
+
 Player player;
+
+Item healthPotion{"Health Potion", "Consumable", true};
+Item ironSword{"Iron Sword", "Weapon", true};
+Item manaPotion{"Mana Potion", "Consumable", true};
+
 bool characterCreated = false;
 int maxHP = 100;
 std::string monsters[4] = {"Goblin", "Skeleton", "Orc", "Slime"};
-
 
 void showMenu(){
 
@@ -31,6 +45,19 @@ void showMenu(){
         
 }
 
+void addItem(Player& player, Item anotherItem)
+{
+    for (int i = 0; i < 5; i++)
+    {
+        if (!player.inventory[i].occupied)
+        {
+            player.inventory[i] = anotherItem;
+            player.inventory[i].occupied = true;
+            break;
+        }
+    }
+}
+
 void createCharacter(Player& player){
     std::cout << "Enter character name: ";
     std::cin >> player.playerName;
@@ -42,6 +69,11 @@ void createCharacter(Player& player){
     player.playerGold = 0;
     player.playerHP = 100;
     player.playerXP = 0;
+
+  player.inventory[0] = healthPotion;
+  player.inventory[1] = ironSword;
+
+  addItem(player, manaPotion);
 
     std::cout << "Character created!" << std::endl;
 
@@ -58,6 +90,21 @@ void showCharacter(Player player){
     std::cout << "Gold: " << player.playerGold << std::endl;
     std::cout << "Current HP: " << player.playerHP << " / " << maxHP << std::endl;
     std::cout << "====================" << std::endl;
+    std::cout << "====================" << std::endl;
+    std::cout << "INVENTORY" << std::endl;
+    std::cout << "====================" << std::endl;
+
+for (int i = 0; i < 5; i++)
+{
+    if (player.inventory[i].occupied)
+    {
+       std::cout << "Slot " << i + 1 << ": "
+          << player.inventory[i].nameItem << std::endl;
+    }
+    else{
+      std::cout << "Slot " << i + 1 << ": Empty" << std::endl;
+    }
+}
 }
 
 void fightMonster(Player& player){

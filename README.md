@@ -6,22 +6,31 @@ This project is part of my learning journey and is developed with AI assisted gu
 
 ## Current Version
 
-Version 0.6
+Version 0.7
 
 ## Project Roadmap
 
 ### ✅ Current Milestone
-Version 0.6
+
+Version 0.7
 
 Focus:
-- Introduced the Player struct.
-- Improved code organization.
-- Continued learning object based design.
+- Introduced the Item struct.
+- Added an inventory system to the Player struct.
+- Added inventory slots using an array of Item objects.
+- Added inventory display.
+- Added an addItem() function.
+- Practiced loops, conditions, object members, arrays, references, and break.
 
-### 🎯 Next Milestone (Version 0.7)
-- Inventory system.
-- Potions.
-- Save and load game.
+### 🎯 Next Milestone
+
+Version 0.8
+
+Focus:
+- Improve inventory management.
+- Add item usage.
+- Add potions.
+- Handle full inventories.
 
 ## Technologies
 
@@ -50,6 +59,8 @@ Focus:
 - Gain experience (XP).
 - Level up your character.
 - View character statistics.
+- Manage an inventory of items.
+- Add items to the inventory.
 
 ## Current Progress
 
@@ -63,19 +74,34 @@ Implemented features:
 - ✅ Experience (XP) system
 - ✅ Level up system
 - ✅ Random monster encounters
+- ✅ Item system
+- ✅ Player inventory
+- ✅ Inventory display
+- ✅ Add item system
 
 ## Planned Features
 
-- Inventory system
 - Potions
 - Different monster stats
 - Monster attacks and abilities
+- Remove items from inventory
+- Inventory full handling
 - Save and load game
 - Shop system
 - Equipment system
 - Boss battles
 
 ## Version History
+
+### Version 0.7
+
+- Introduced the Item struct.
+- Added a 5 slot inventory to the Player struct.
+- Added Health Potion and Iron Sword items.
+- Added inventory display.
+- Added an addItem() function.
+- Practiced arrays of custom types.
+- Practiced loops and break.
 
 ### Version 0.6
 - Refactored player data using a struct.
