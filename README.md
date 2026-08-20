@@ -21,6 +21,8 @@ Focus:
 - Added inventory display.
 - Added an addItem() function.
 - Practiced loops, conditions, object members, arrays, references, and break.
+- Added inventory full handling using boolean return values.
+- Learned how functions can return information to the caller.
 
 ### 🎯 Next Milestone
 
@@ -86,7 +88,6 @@ Implemented features:
 - Different monster stats
 - Monster attacks and abilities
 - Remove items from inventory
-- Inventory full handling
 - Save and load game
 - Shop system
 - Equipment system
@@ -98,11 +99,12 @@ Implemented features:
 
 - Introduced the Item struct.
 - Added a 5 slot inventory to the Player struct.
-- Added Health Potion and Iron Sword items.
+- Added Health Potion, Iron Sword, and Mana Potion items.
 - Added inventory display.
 - Added an addItem() function.
+- Added inventory full handling.
 - Practiced arrays of custom types.
-- Practiced loops and break.
+- Practiced loops, conditions, references, break, and boolean return values.
 
 ### Version 0.6
 - Refactored player data using a struct.

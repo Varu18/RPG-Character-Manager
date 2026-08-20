@@ -53,9 +53,11 @@ bool addItem(Player& player, Item anotherItem)
         {
             player.inventory[i] = anotherItem;
             player.inventory[i].occupied = true;
-            break;
+            return true;
         }
     }
+
+    return false;
 }
 
 void createCharacter(Player& player){
@@ -73,7 +75,14 @@ void createCharacter(Player& player){
   player.inventory[0] = healthPotion;
   player.inventory[1] = ironSword;
 
-  addItem(player, manaPotion);
+ if (addItem(player, manaPotion))
+{
+    std::cout << "Item added successfully!" << std::endl;
+}
+else
+{
+    std::cout << "Inventory is full!" << std::endl;
+}
 
     std::cout << "Character created!" << std::endl;
 
