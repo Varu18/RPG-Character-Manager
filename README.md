@@ -49,6 +49,7 @@ Focus:
 - Learn to organize code using structs.
 - Build a strong programming foundation for future languages such as Python and JavaScript.
 - Gain hands on experience with Linux development using Fedora.
+- Practice making small, focused Git commits.
 
 ## Features
 

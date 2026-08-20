@@ -45,7 +45,7 @@ void showMenu(){
         
 }
 
-void addItem(Player& player, Item anotherItem)
+bool addItem(Player& player, Item anotherItem)
 {
     for (int i = 0; i < 5; i++)
     {
