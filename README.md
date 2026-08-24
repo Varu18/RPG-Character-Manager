@@ -23,6 +23,11 @@ Focus:
 - Practiced loops, conditions, object members, arrays, references, and break.
 - Added inventory full handling using boolean return values.
 - Learned how functions can return information to the caller.
+- Added removeItem() functionality.
+- Added inventory slot validation.
+- Added empty slot validation.
+- Separated inventory display into showInventory().
+- Improved function organization and code reuse.
 
 ### 🎯 Next Milestone
 
@@ -81,13 +86,17 @@ Implemented features:
 - ✅ Player inventory
 - ✅ Inventory display
 - ✅ Add item system
+- ✅ Item system
+- ✅ Player inventory
+- ✅ Inventory display
+- ✅ Add item system
+- ✅ Remove item system
 
 ## Planned Features
 
 - Potions
 - Different monster stats
 - Monster attacks and abilities
-- Remove items from inventory
 - Save and load game
 - Shop system
 - Equipment system

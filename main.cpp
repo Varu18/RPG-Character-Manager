@@ -41,8 +41,24 @@ void showMenu(){
     std::cout << "2.Show Character" << std::endl;
     std::cout <<"3.Fight monster" << std::endl;
     std::cout <<"4.Heal Character" << std::endl;
-    std::cout <<"5.Exit" << std::endl;
+    std::cout <<"5.Remove Item" << std::endl;
+    std::cout <<"6.Exit" << std::endl;
         
+}
+
+void removeItem(Player& player, int slot)
+{
+  if (slot < 1 || slot > 5)
+  {
+    std::cout << "Invalid inventory slot!" << std::endl;
+    return;
+  }
+  if(!player.inventory[slot - 1].occupied){
+    std::cout << "Inventory slot is already empty!" << std::endl;
+    return; 
+  }
+  
+  player.inventory[slot - 1].occupied = false;
 }
 
 bool addItem(Player& player, Item anotherItem)
@@ -58,6 +74,27 @@ bool addItem(Player& player, Item anotherItem)
     }
 
     return false;
+}
+
+void showInventory(Player& player)
+{
+
+    std::cout << "====================" << std::endl;
+    std::cout << "INVENTORY" << std::endl;
+    std::cout << "====================" << std::endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (player.inventory[i].occupied)
+        {
+            std::cout << "Slot " << i + 1 << ": "
+                      << player.inventory[i].nameItem << std::endl;
+        }
+        else
+        {
+            std::cout << "Slot " << i + 1 << ": Empty" << std::endl;
+        }
+    }
 }
 
 void createCharacter(Player& player){
@@ -83,7 +120,6 @@ else
 {
     std::cout << "Inventory is full!" << std::endl;
 }
-
     std::cout << "Character created!" << std::endl;
 
     characterCreated = true;
@@ -103,17 +139,7 @@ void showCharacter(Player player){
     std::cout << "INVENTORY" << std::endl;
     std::cout << "====================" << std::endl;
 
-for (int i = 0; i < 5; i++)
-{
-    if (player.inventory[i].occupied)
-    {
-       std::cout << "Slot " << i + 1 << ": "
-          << player.inventory[i].nameItem << std::endl;
-    }
-    else{
-      std::cout << "Slot " << i + 1 << ": Empty" << std::endl;
-    }
-}
+      showInventory(player);
 }
 
 void fightMonster(Player& player){
@@ -229,7 +255,18 @@ do{
   else if(option==4){
     healCharacter(player);
   }
-  else if (option == 5){
+  else if (option == 5)
+{
+    int slot;
+
+    showInventory(player);
+
+    std::cout << "Enter inventory slot to remove: ";
+    std::cin >> slot;
+
+    removeItem(player, slot);
+}
+  else if (option == 6){
     std::cout << "Goodbye!" << std::endl;
   }
 else{
@@ -237,6 +274,6 @@ else{
 }
 
 }
-while (option != 5);
+while (option != 6);
 return 0;
 }
