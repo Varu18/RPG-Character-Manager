@@ -8,6 +8,7 @@ struct Item
     std::string nameItem;
     std::string typeItem;
     bool occupied = false;
+    int valueItem = 0;
 };
 
 struct Player
@@ -24,9 +25,9 @@ struct Player
 
 Player player;
 
-Item healthPotion{"Health Potion", "Consumable", true};
-Item ironSword{"Iron Sword", "Weapon", true};
-Item manaPotion{"Mana Potion", "Consumable", true};
+Item healthPotion{"Health Potion", "Consumable", true, 20};
+Item ironSword{"Iron Sword", "Weapon", true, 10};
+Item manaPotion{"Mana Potion", "Consumable", true, 30};
 
 bool characterCreated = false;
 int maxHP = 100;
@@ -42,8 +43,38 @@ void showMenu(){
     std::cout <<"3.Fight monster" << std::endl;
     std::cout <<"4.Heal Character" << std::endl;
     std::cout <<"5.Remove Item" << std::endl;
-    std::cout <<"6.Exit" << std::endl;
+    std::cout <<"6.Use Item" << std::endl;
+    std::cout <<"7.Exit" << std::endl;
         
+}
+
+void useItem(Player& player, int slot)
+{
+  if (slot < 1 || slot > 5)
+  {
+    std::cout << "Invalid inventory slot!" << std::endl;
+    return;
+  }
+  if (!player.inventory[slot - 1].occupied)
+{
+    std::cout << "Inventory slot is empty!" << std::endl;
+    return;
+}
+if (player.inventory[slot - 1].typeItem != "Consumable")
+{
+    std::cout << "This item is not consumable!" << std::endl;
+    return;
+}
+player.playerHP += player.inventory[slot - 1].valueItem;
+
+if (player.playerHP > maxHP)
+{
+    player.playerHP = maxHP;
+}
+std::cout << "You used "
+          << player.inventory[slot - 1].nameItem
+          << "!" << std::endl;
+  player.inventory[slot - 1].occupied = false;
 }
 
 void removeItem(Player& player, int slot)
@@ -53,6 +84,7 @@ void removeItem(Player& player, int slot)
     std::cout << "Invalid inventory slot!" << std::endl;
     return;
   }
+  
   if(!player.inventory[slot - 1].occupied){
     std::cout << "Inventory slot is already empty!" << std::endl;
     return; 
@@ -111,15 +143,8 @@ void createCharacter(Player& player){
 
   player.inventory[0] = healthPotion;
   player.inventory[1] = ironSword;
+  addItem(player, manaPotion);
 
- if (addItem(player, manaPotion))
-{
-    std::cout << "Item added successfully!" << std::endl;
-}
-else
-{
-    std::cout << "Inventory is full!" << std::endl;
-}
     std::cout << "Character created!" << std::endl;
 
     characterCreated = true;
@@ -266,7 +291,18 @@ do{
 
     removeItem(player, slot);
 }
-  else if (option == 6){
+  else if(option == 6){
+  
+  int slot;
+
+  showInventory(player);
+
+  std::cout << "Enter inventory slot to use:";
+  std::cin >> slot;
+  
+  useItem(player, slot);
+}
+  else if (option == 7){
     std::cout << "Goodbye!" << std::endl;
   }
 else{
@@ -274,6 +310,6 @@ else{
 }
 
 }
-while (option != 6);
+while (option != 7);
 return 0;
 }
