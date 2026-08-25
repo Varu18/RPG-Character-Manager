@@ -6,38 +6,31 @@ This project is part of my learning journey and is developed with AI assisted gu
 
 ## Current Version
 
-Version 0.7
+Version 0.8
 
-## Project Roadmap
+### Project Roadmap
 
 ### ✅ Current Milestone
-
-Version 0.7
-
-Focus:
-- Introduced the Item struct.
-- Added an inventory system to the Player struct.
-- Added inventory slots using an array of Item objects.
-- Added inventory display.
-- Added an addItem() function.
-- Practiced loops, conditions, object members, arrays, references, and break.
-- Added inventory full handling using boolean return values.
-- Learned how functions can return information to the caller.
-- Added removeItem() functionality.
-- Added inventory slot validation.
-- Added empty slot validation.
-- Separated inventory display into showInventory().
-- Improved function organization and code reuse.
-
-### 🎯 Next Milestone
 
 Version 0.8
 
 Focus:
-- Improve inventory management.
-- Add item usage.
-- Add potions.
-- Handle full inventories.
+- Added item usage.
+- Added consumable items.
+- Added item effects using valueItem.
+- Added Health Potion healing.
+- Added automatic item removal after use.
+- Practiced conditions, object members, references, and function logic.
+
+### 🎯 Next Milestone
+
+Version 0.9
+
+Focus:
+- Improve the console interface.
+- Make menus easier to read and use.
+- Add visual elements using ASCII characters and emojis.
+- Improve battle and inventory presentation.
 
 ## Technologies
 
@@ -86,23 +79,30 @@ Implemented features:
 - ✅ Player inventory
 - ✅ Inventory display
 - ✅ Add item system
-- ✅ Item system
-- ✅ Player inventory
-- ✅ Inventory display
-- ✅ Add item system
 - ✅ Remove item system
+- ✅ Consumable items
 
 ## Planned Features
 
-- Potions
 - Different monster stats
 - Monster attacks and abilities
+- More consumable items
 - Save and load game
 - Shop system
 - Equipment system
 - Boss battles
 
 ## Version History
+
+### Version 0.8
+
+- Added useItem() functionality.
+- Added consumable item support.
+- Added item effect values.
+- Added Health Potion healing.
+- Added automatic removal of consumed items.
+- Added validation for usable items.
+- Practiced boolean conditions, references, and function logic.
 
 ### Version 0.7
 
