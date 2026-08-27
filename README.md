@@ -70,24 +70,28 @@ Implemented features:
 - ✅ Character creation
 - ✅ Character statistics
 - ✅ Battle system
+- ✅ Interactive battle loop
+- ✅ Attack option
+- ✅ Use Item option
+- ✅ Run option
 - ✅ Healing system
 - ✅ Gold system
 - ✅ Experience (XP) system
 - ✅ Level up system
 - ✅ Random monster encounters
+- ✅ Monster struct
+- ✅ Monster HP and max HP
+- ✅ Monster-specific damage
+- ✅ Player damage
+- ✅ Monster death detection
+- ✅ Game over handling
+- ✅ Battle rewards
 - ✅ Item system
 - ✅ Player inventory
 - ✅ Inventory display
 - ✅ Add item system
 - ✅ Remove item system
 - ✅ Consumable items
-- ✅ Monster struct
-- ✅ Monster HP and max HP
-- ✅ Monster-specific damage
-- ✅ Player damage
-- ✅ Monster death detection
-- ✅ Rewards after defeating a monster
-- ✅ Level-up handling
 
 ## Planned Features
 

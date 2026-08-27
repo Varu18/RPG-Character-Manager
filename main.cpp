@@ -137,10 +137,9 @@ bool addItem(Player& player, Item anotherItem)
 void showInventory(Player& player)
 {
 
-    std::cout << "====================" << std::endl;
-    std::cout << "INVENTORY" << std::endl;
-    std::cout << "====================" << std::endl;
-
+    std::cout << "╔═════════════════════════════╗" << std::endl;
+    std::cout << "║        📦 INVENTORY         ║" << std::endl;
+    std::cout << "╠═════════════════════════════╣" << std::endl;
     for (int i = 0; i < 5; i++)
     {
         if (player.inventory[i].occupied)
@@ -153,6 +152,20 @@ void showInventory(Player& player)
             std::cout << "Slot " << i + 1 << ": Empty" << std::endl;
         }
     }
+}
+
+int attackMenu()
+{
+    int option;
+
+    std::cout << "1. ⚔️  Attack" << std::endl;
+    std::cout << "2. 🧪 Use Item" << std::endl;
+    std::cout << "3. 🏃 Run" << std::endl;
+    std::cout << "====================" << std::endl;
+    std::cout << "Select your option: ";
+    std::cin >> option;
+
+    return option;
 }
 
 void createCharacter(Player& player){
@@ -196,7 +209,6 @@ void fightMonster(Player& player)
 {
     int randomMonster = rand() % 4;
     int damage = monsters[randomMonster].monsterDamage;
-    int playerDamage = rand() % 21 + 10;
     int gold = rand() % 16 + 5;
     int randomXP = rand() % 21 + 10;
 
@@ -210,128 +222,132 @@ void fightMonster(Player& player)
               << monsters[randomMonster].nameMonster
               << " appears!" << std::endl;
 
-    std::cout << "You attack the "
-              << monsters[randomMonster].nameMonster
-              << " for "
-              << playerDamage
-              << " damage!" << std::endl;
-
-    monsters[randomMonster].monsterHP -= playerDamage;
-
-    if (monsters[randomMonster].monsterHP <= 0)
+    while (player.playerHP > 0 && monsters[randomMonster].monsterHP > 0)
     {
-        std::cout << "💀 The "
-                  << monsters[randomMonster].nameMonster
-                  << " has been defeated!" << std::endl;
+        int option = attackMenu();
+        int playerDamage = rand() % 21 + 10;
 
-        player.playerGold += gold;
-        player.playerXP += randomXP;
-
-        std::cout << "Current HP: "
-                  << player.playerHP
-                  << std::endl;
-
-        std::cout << std::endl;
-
-        std::cout << "====================" << std::endl;
-        std::cout << "REWARDS" << std::endl;
-        std::cout << "====================" << std::endl;
-
-        std::cout << "The "
-                  << monsters[randomMonster].nameMonster
-                  << " dropped "
-                  << gold
-                  << " gold!" << std::endl;
-
-        std::cout << "You gained "
-                  << randomXP
-                  << " XP!" << std::endl;
-
-        if (player.playerXP >= 100)
+        if (option == 1)
         {
-            player.playerLevel += 1;
-            player.playerXP -= 100;
+            monsters[randomMonster].monsterHP -= playerDamage;
 
             std::cout << std::endl;
-            std::cout << "====================" << std::endl;
-            std::cout << "LEVEL UP!" << std::endl;
-            std::cout << "====================" << std::endl;
-
-            std::cout << "Congratulations!" << std::endl;
-            std::cout << "You reached Level "
-                      << player.playerLevel
+            std::cout << "╔════════════════════════════╗" << std::endl;
+            std::cout << "║       ⚔️  ATTACK           ║" << std::endl;
+            std::cout << "╠════════════════════════════╣" << std::endl;
+            std::cout << "║ ⚔️ You attack the "
+                      << monsters[randomMonster].nameMonster
                       << "!" << std::endl;
-        }
+            std::cout << "║ 💥 Damage: "
+                      << playerDamage
+                      << std::endl;
+            std::cout << "║ ❤️ Monster HP: "
+                      << monsters[randomMonster].monsterHP
+                      << " / "
+                      << monsters[randomMonster].monsterMaxHP
+                      << std::endl;
+            std::cout << "╚════════════════════════════╝" << std::endl;
 
-        return;
-    }
+            if (monsters[randomMonster].monsterHP <= 0)
+            {
+                std::cout << std::endl;
+                std::cout << "╔════════════════════════════╗" << std::endl;
+                std::cout << "║      💀 DEFEATED!          ║" << std::endl;
+                std::cout << "╠════════════════════════════╣" << std::endl;
+                std::cout << "║ 💀 "
+                          << monsters[randomMonster].nameMonster
+                          << " has been defeated!" << std::endl;
+                std::cout << "╚════════════════════════════╝" << std::endl;
 
-    std::cout << "The "
-              << monsters[randomMonster].nameMonster
-              << " has "
-              << monsters[randomMonster].monsterHP
-              << " HP remaining!" << std::endl;
+                player.playerGold += gold;
+                player.playerXP += randomXP;
 
-    std::cout << "The "
-              << monsters[randomMonster].nameMonster
-              << " hits you for "
-              << damage
-              << " damage!" << std::endl;
+                std::cout << std::endl;
+                std::cout << "╔════════════════════════════╗" << std::endl;
+                std::cout << "║        🏆 REWARDS          ║" << std::endl;
+                std::cout << "╠════════════════════════════╣" << std::endl;
+                std::cout << "║ 💰 Gold: +" << gold << std::endl;
+                std::cout << "║ ✨ XP: +" << randomXP << std::endl;
+                std::cout << "╚════════════════════════════╝" << std::endl;
 
-    player.playerHP -= damage;
+                if (player.playerXP >= 100)
+                {
+                    player.playerLevel += 1;
+                    player.playerXP -= 100;
 
-    if (player.playerHP <= 0)
-    {
-        player.playerHP = 0;
-        std::cout << "You are dead!" << std::endl;
-    }
-    else
-    {
-        player.playerGold += gold;
-        player.playerXP += randomXP;
+                    std::cout << std::endl;
+                    std::cout << "╔════════════════════════════╗" << std::endl;
+                    std::cout << "║      ✅   LEVEL-UP         ║" << std::endl;
+                    std::cout << "╠════════════════════════════╣" << std::endl;
+                    std::cout << "║ 🎉 Congratulations!        ║" << std::endl;
+                    std::cout << "║ ⭐ Level: "
+                              << player.playerLevel
+                              << "                    ║" << std::endl;
+                    std::cout << "╚════════════════════════════╝" << std::endl;
+                }
 
-        std::cout << "Current HP: "
-                  << player.playerHP
-                  << std::endl;
-
-        std::cout << std::endl;
-
-        std::cout << "====================" << std::endl;
-        std::cout << "REWARDS" << std::endl;
-        std::cout << "====================" << std::endl;
-
-        std::cout << "The "
-                  << monsters[randomMonster].nameMonster
-                  << " dropped "
-                  << gold
-                  << " gold!" << std::endl;
-
-        std::cout << "You gained "
-                  << randomXP
-                  << " XP!" << std::endl;
-
-        if (player.playerXP >= 100)
-        {
-            player.playerLevel += 1;
-            player.playerXP -= 100;
+                return;
+            }
 
             std::cout << std::endl;
-            std::cout << "====================" << std::endl;
-            std::cout << "LEVEL UP!" << std::endl;
-            std::cout << "====================" << std::endl;
+            std::cout << "╔════════════════════════════╗" << std::endl;
+            std::cout << "║      👹 ENEMY ATTACK       ║" << std::endl;
+            std::cout << "╠════════════════════════════╣" << std::endl;
+            std::cout << "║ 💥 "
+                      << monsters[randomMonster].nameMonster
+                      << " attacks!" << std::endl;
+            std::cout << "║ ⚔️ Damage: "
+                      << damage
+                      << std::endl;
 
-            std::cout << "Congratulations!" << std::endl;
-            std::cout << "You reached Level "
-                      << player.playerLevel
-                      << "!" << std::endl;
+            player.playerHP -= damage;
+
+            if (player.playerHP <= 0)
+            {
+                player.playerHP = 0;
+
+                std::cout << "║ ❤️ Your HP: 0 / "
+                          << maxHP
+                          << std::endl;
+                std::cout << "╚════════════════════════════╝" << std::endl;
+
+                std::cout << std::endl;
+                std::cout << "╔════════════════════════════╗" << std::endl;
+                std::cout << "║        💀 GAME OVER        ║" << std::endl;
+                std::cout << "╠════════════════════════════╣" << std::endl;
+                std::cout << "║ 💀 You have been defeated! ║" << std::endl;
+                std::cout << "╚════════════════════════════╝" << std::endl;
+
+                return;
+            }
+
+            std::cout << "║ ❤️ Your HP: "
+                      << player.playerHP
+                      << " / "
+                      << maxHP
+                      << std::endl;
+            std::cout << "╚════════════════════════════╝" << std::endl;
         }
+        else if (option == 2)
+        {
+            int slot;
 
-        std::cout << std::endl;
-        std::cout << "====================" << std::endl;
-        std::cout << "UPDATED CHARACTER" << std::endl;
-        std::cout << "====================" << std::endl;
+            showInventory(player);
 
-        showCharacter(player);
+            std::cout << "Enter inventory slot to use: ";
+            std::cin >> slot;
+
+            useItem(player, slot);
+        }
+        else if (option == 3)
+        {
+            std::cout << "🏃 You ran away!" << std::endl;
+            return;
+        }
+        else
+        {
+            std::cout << "❌ Invalid option!" << std::endl;
+        }
     }
 }
 
