@@ -81,6 +81,13 @@ Implemented features:
 - ✅ Add item system
 - ✅ Remove item system
 - ✅ Consumable items
+- ✅ Monster struct
+- ✅ Monster HP and max HP
+- ✅ Monster-specific damage
+- ✅ Player damage
+- ✅ Monster death detection
+- ✅ Rewards after defeating a monster
+- ✅ Level-up handling
 
 ## Planned Features
 
