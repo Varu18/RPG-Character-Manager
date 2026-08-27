@@ -196,35 +196,87 @@ void fightMonster(Player& player)
 {
     int randomMonster = rand() % 4;
     int damage = monsters[randomMonster].monsterDamage;
+    int playerDamage = rand() % 21 + 10;
     int gold = rand() % 16 + 5;
     int randomXP = rand() % 21 + 10;
 
-std::cout << "╔══════════════════════════════╗" << std::endl;
-std::cout << "║          ⚔️ BATTLE ⚔️          ║" << std::endl;
-std::cout << "╠══════════════════════════════╣" << std::endl;
-std::cout << "║ 👹 " << monsters[randomMonster].nameMonster<< "                     ║" << std::endl;
-std::cout << "║ ❤️ HP: " << monsters[randomMonster].monsterHP << " / " << monsters[randomMonster].monsterMaxHP << "                ║" << std::endl;
-std::cout << "╠══════════════════════════════╣" << std::endl;
-std::cout << "║ 👤 " << player.playerName << "                       ║" << std::endl;
-std::cout << "║ ❤️ HP: " << player.playerHP << " / " << maxHP << "              ║" << std::endl;
-std::cout << "╚══════════════════════════════╝" << std::endl;
+    monsters[randomMonster].monsterHP = monsters[randomMonster].monsterMaxHP;
 
     std::cout << "╔══════════════════════════════╗" << std::endl;
-    std::cout << "║ 💥 "
-          << monsters[randomMonster].nameMonster
-          << " attacks!              ║" << std::endl;
-        std::cout << "║ ⚔️ You take "
-          << damage
-          << " damage!               ║" << std::endl;
+    std::cout << "║          ⚔️ BATTLE ⚔️        ║" << std::endl;
     std::cout << "╚══════════════════════════════╝" << std::endl;
-      std::cout << "╔══════════════════════════════╗" << std::endl;
-      std::cout << "║ 👤 " << player.playerName << std::endl;
-      std::cout << "║ ❤️ HP: "
-                << player.playerHP
-                << " / "
-                << maxHP
-                << std::endl;
-      std::cout << "╚══════════════════════════════╝" << std::endl;
+
+    std::cout << "A wild "
+              << monsters[randomMonster].nameMonster
+              << " appears!" << std::endl;
+
+    std::cout << "You attack the "
+              << monsters[randomMonster].nameMonster
+              << " for "
+              << playerDamage
+              << " damage!" << std::endl;
+
+    monsters[randomMonster].monsterHP -= playerDamage;
+
+    if (monsters[randomMonster].monsterHP <= 0)
+    {
+        std::cout << "💀 The "
+                  << monsters[randomMonster].nameMonster
+                  << " has been defeated!" << std::endl;
+
+        player.playerGold += gold;
+        player.playerXP += randomXP;
+
+        std::cout << "Current HP: "
+                  << player.playerHP
+                  << std::endl;
+
+        std::cout << std::endl;
+
+        std::cout << "====================" << std::endl;
+        std::cout << "REWARDS" << std::endl;
+        std::cout << "====================" << std::endl;
+
+        std::cout << "The "
+                  << monsters[randomMonster].nameMonster
+                  << " dropped "
+                  << gold
+                  << " gold!" << std::endl;
+
+        std::cout << "You gained "
+                  << randomXP
+                  << " XP!" << std::endl;
+
+        if (player.playerXP >= 100)
+        {
+            player.playerLevel += 1;
+            player.playerXP -= 100;
+
+            std::cout << std::endl;
+            std::cout << "====================" << std::endl;
+            std::cout << "LEVEL UP!" << std::endl;
+            std::cout << "====================" << std::endl;
+
+            std::cout << "Congratulations!" << std::endl;
+            std::cout << "You reached Level "
+                      << player.playerLevel
+                      << "!" << std::endl;
+        }
+
+        return;
+    }
+
+    std::cout << "The "
+              << monsters[randomMonster].nameMonster
+              << " has "
+              << monsters[randomMonster].monsterHP
+              << " HP remaining!" << std::endl;
+
+    std::cout << "The "
+              << monsters[randomMonster].nameMonster
+              << " hits you for "
+              << damage
+              << " damage!" << std::endl;
 
     player.playerHP -= damage;
 
