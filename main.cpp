@@ -47,9 +47,21 @@ Monster slime{"Slime", 40, 40, 8};
 Monster monsters[4] = {goblin, skeleton, orc, slime};
 
 
-void showBattle(Player& player, std::string monster, int monsterHP)
+void showBattle(Player& player, Monster& Monster)
 {
+std::cout << "╔══════════════════════════════╗" << std::endl;
+std::cout << "║          ⚔️ BATTLE ⚔️          ║" << std::endl;
+std::cout << "╠══════════════════════════════╣" << std::endl;
 
+std::cout << "║ 👹 " << Monster.nameMonster <<"                    ║"<< std::endl;
+std::cout << "║ ❤️  HP: " << Monster.monsterHP
+          << " / " << Monster.monsterMaxHP << "               ║"<< std::endl;
+
+std::cout << "║                              ║" << std::endl;
+
+std::cout << "║ 👤 " << player.playerName << "                         ║" << std::endl;
+std::cout << "║ ❤️  HP: " << player.playerHP
+          << " / " << maxHP << "             ║" << std::endl;
 }
 
 void showMenu()
@@ -224,6 +236,8 @@ void fightMonster(Player& player)
 
     while (player.playerHP > 0 && monsters[randomMonster].monsterHP > 0)
     {
+      showBattle(player, monsters[randomMonster]);
+
         int option = attackMenu();
         int playerDamage = rand() % 21 + 10;
 
@@ -233,11 +247,11 @@ void fightMonster(Player& player)
 
             std::cout << std::endl;
             std::cout << "╔════════════════════════════╗" << std::endl;
-            std::cout << "║       ⚔️  ATTACK           ║" << std::endl;
+            std::cout << "║       ⚔️  ATTACK            ║" << std::endl;
             std::cout << "╠════════════════════════════╣" << std::endl;
             std::cout << "║ ⚔️ You attack the "
                       << monsters[randomMonster].nameMonster
-                      << "!" << std::endl;
+                      << "!"<< std::endl;
             std::cout << "║ 💥 Damage: "
                       << playerDamage
                       << std::endl;
