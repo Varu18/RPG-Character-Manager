@@ -53,6 +53,18 @@ Focus:
 - Visual Studio Code
 - Fedora Linux
 
+## Run the GUI
+
+From the project folder, build the C++ engine and start the Tkinter interface:
+
+```bash
+make run
+```
+
+The GUI starts `rpg_core` as a child process and exchanges one command or game
+state message per line through standard input/output. Keep the executable next
+to `rpg_gui.py`; the Makefile creates it there automatically.
+
 ## Learning Goals
 
 - Learn C++ fundamentals.
