@@ -10,6 +10,19 @@ Version 0.9
 
 ## Project Roadmap
 
+
+## Project Status
+
+**Version 0.9 — Final Version**
+
+This project has reached its final planned version.
+
+The RPG Character Manager was created as a practical learning project focused on programming fundamentals, C++, Python, game logic, data structures, functions, structs, object-oriented concepts, inventory systems, combat systems, GUI development, and communication between different technologies.
+
+Development of this specific RPG project ends with Version 0.9. The project is considered complete for its purpose as a learning project.
+
+This does **not** mean the end of my programming studies. I will continue studying programming fundamentals, C++, algorithms, problem solving, and software development through exercises and future projects.
+
 ### ✅ Current Milestone
 
 Version 0.9
